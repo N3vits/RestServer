@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import cors from 'cors'
 import { router } from '../routes/user.routes.js';
+import { router as auth } from '../routes/auth.routes.js';
 import { dbConnection } from '../db/config.js';
 dotenv.config();
 
@@ -30,6 +31,7 @@ export class Server {
     }
     routing() {
         this.app.use('/api/users', router);
+        this.app.use('/api/auth', auth)
     }
 
     listing() {

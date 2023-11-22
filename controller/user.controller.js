@@ -33,9 +33,11 @@ export const postUser = async (req, res) => {
 
 export const deleteUser = async(req, res) => {
   const {id} = req.params;
+  const logged = req.user;
   const user = await User.findByIdAndDelete(id, {status: false} );
   res.json({
-    user
+    user,
+    logged
   });
 };
 
